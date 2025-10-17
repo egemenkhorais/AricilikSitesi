@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | Balcı Teyze</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #FFD700;
+            --secondary-yellow: #FFC107;
+            --accent-orange: #FF8C00;
+            --warm-gold: #DAA520;
+            --pure-white: #FFFFFF;
+            --soft-black: #1A1A1A;
+            --light-gray: #F8F9FA;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--pure-white) 100%);
+            color: var(--soft-black);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--warm-gold) 100%);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            /* font-size, font-weight, color gibi özellikler artık logo resminizi etkilemeyecektir. */
+            /* Eğer sadece resim olacaksa, bu font-size vb. kaldırılabilir. */
+            font-size: 1.8rem; /* Metin varsa işe yarar */
+            font-weight: bold; /* Metin varsa işe yarar */
+            color: var(--soft-black); /* Metin varsa işe yarar */
+        }
+        .compname a {
+            text-decoration: none; /* Alt çizgiyi kaldırır */
+            color: inherit;      /* Link rengini varsayılan olarak üst elementinden alır */
+            /* Diğer stil ayarlarınız (eğer varsa) */
+        }
+
+        .compname a:hover {
+            text-decoration: none; /* Hover durumunda da alt çizgi olmasın */
+        }
+        /* Yeni eklenen img etiketi için stil */
+        .logo img {
+            height: 80px; /* Logonun yüksekliğini 70 piksel olarak ayarladım */
+            width: auto; /* Orantıyı korumak için genişliği otomatik bıraktım */
+            object-fit: contain; /* Görselin kapsayıcı içinde düzgün görünmesini sağlar */
+            transition: all 0.3s ease; /* Hover efekti için yumuşak geçiş */
+        }
+
+        .logo img:hover {
+            transform: scale(1.05); /* Hover yapıldığında hafifçe büyüt */
+        }
+
+        /* Önceki bal arısı emojisini gizle (artık resim kullanıyoruz) */
+        .logo::before {
+            display: none; /* Bu satır emoji'yi tamamen gizleyecektir */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--soft-black);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--pure-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, var(--secondary-yellow) 0%, var(--accent-orange) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23FFD700" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%23FFC107" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="%23FF8C00" opacity="0.2"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            color: var(--pure-white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Content Section */
+        .about-content {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-story {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .about-story:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .about-story::before {
+            content: "🍯";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--soft-black);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-orange));
+            border-radius: 2px;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .story-text:first-of-type::first-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 3rem;
+            margin: 0.5rem 0.5rem 0 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--light-gray);
+            font-style: italic;
+            color: var(--warm-gold);
+        }
+
+        .signature strong {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+            font-style: normal;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--pure-white) 100%);
+            padding: 4rem 2rem;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 25px var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-orange));
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--soft-black);
+        }
+
+        .value-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-black);
+            color: var(--pure-white);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-story {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .story-text {
+                font-size: 1rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-story::before {
+                display: none;
+            }
+
+            .story-text:first-of-type::first-letter {
+                float: none;
+                font-size: inherit;
+                line-height: inherit;
+                margin: 0;
+                color: inherit;
+                font-weight: inherit;
+            }
+        }
+
+        /* Animation classes for scroll effects */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .about-hero {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--pure-white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .about-hero img {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+        }
+        .about-hero::before {
+         display: none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+            <img src="senin-logo.png">
+        </div>
+        <div class="compname">
+            <a href="beekeeping-website.html" class="logo">Uğurlu Bal</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="beekeeping-website.html">Ana Sayfa</a></li>
+            <li><a href="beekeeping-website.html#urunler">Ürünler</a></li>
+            <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
+            <li><a href="beekeeping-website.html#iletisim">İletişim</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="about-hero" style="background-image: url('cicekfotosu.jpg');">
+    <div class="about-hero-content">
+        <h1>Bizim Hikayemiz</h1>
+        <p>Anadolu'nun bereketli topraklarından gelen geleneksel arıcılık sanatı</p>
+    </div>
+</section>
+
+<section class="about-content">
+    <div class="about-story fade-in-up">
+        <h2 class="section-title">Biz Kimiz?</h2>
+        <p class="story-text">
+            Uğurlu Bal olarak Anadolu'nun ve Trakya'nın bereketli topraklarından, temiz doğasından ve yılların arıcılık tecrübesinden gelen en saf balları sizlerle buluşturuyoruz. Her damla balımız, doğaya duyduğumuz saygının, emeğin ve sevginin bir yansımasıdır.
+        </p>
+        <p class="story-text">
+            Yalnızca bal değil, bir yaşam biçimini sunuyoruz. Dedemizden miras kalan bu geleneği, modern hijyenik koşullarda, katkısız ve tamamen doğal yöntemlerle üretmeye devam ediyoruz. Sizlere sağlıklı, güvenilir ve lezzetli ürünler sunmak için buradayız.
+        </p>
+        <p class="story-text">
+            Arılarımızın özgürce uçtuğu, doğal çiçeklerden topladığı nektarları en saf haliyle sofralarınıza taşıyoruz. Kalitemizden asla ödün vermez, her ürünümüzü sevgiyle hazırlarız.
+        </p>
+        <div class="signature">
+            Sevgiyle,
+            <strong>Uğurlu Bal Ailesi</strong>
+        </div>
+    </div>
+</section>
+
+<section class="values-section">
+    <div class="values-container">
+        <h2 class="section-title">Neden Uğurlu Bal?</h2>
+        <div class="values-grid">
+            <div class="value-card fade-in-up">
+                <span class="value-icon">🌿</span>
+                <h3 class="value-title">100% Doğal</h3>
+                <p class="value-description">Tamamen doğal yöntemlerle üretilmiş organik ballar.</p>
+            </div>
+            <div class="value-card fade-in-up">
+                <span class="value-icon">🏔️</span>
+                <h3 class="value-title">Yüksek Kalite</h3>
+                <p class="value-description">Temiz dağ havaları ve kirlilikten uzak bölgelerden toplanan premium ballar.</p>
+            </div>
+            <div class="value-card fade-in-up">
+                <span class="value-icon">🧪</span>
+                <h3 class="value-title">Resmi Arıcı Ürünü</h3>
+                <p class="value-description">Tüm ürünlerimiz devlet tarafından onaylı, sertifikalı ve güvenilir arıcı ürünüdür.</p>
+            </div>
+            <div class="value-card fade-in-up">
+                <span class="value-icon">🚚</span>
+                <h3 class="value-title">Hızlı Teslimat</h3>
+                <p class="value-description">Tüm Türkiye'ye özel ambalaj ile hızlı ve güvenli teslimat hizmeti sunuyoruz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="iletisim">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#destek">Müşteri Desteği</a>
+        </div>
+        <div class="copyright">
+            <p> 2025 Uğurlu Bal | Tel: (541) 885-1676 | Email: egemenkoray05@gmail.com</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with fade-in-up class
+    document.querySelectorAll('.fade-in-up').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Add staggered animation delay to value cards
+    document.querySelectorAll('.value-card').forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
+</script>
+</body>
+</html>
