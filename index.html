@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uğurlu Bal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/senin-logo.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/senin-logo.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/senin-logo.png">
+
+    <link rel="manifest" href="/site.webmanifest">
     <style>
         * {
             margin: 0;
@@ -685,9 +693,11 @@
 
         /* Mobil için video gizle */
         @media (max-width: 480px) {
-            .hero-video, .video-overlay {
+            /*hero-video, .video-overlay {
                 display: none;
             }
+
+             */
         }
         .logo {
             display: flex;
@@ -772,7 +782,7 @@
             <div class="product-info">
                 <h3 class="product-name">Çiçek Balı</h3>
                 <p class="product-description">Çeşitli çiçeklerden toplanan aromatik ve lezzetli bal. Günlük kullanım için ideal.</p>
-                <div class="product-price">₺450/kg</div>
+                <div class="product-price">₺400/kg</div>
                 <button class="add-to-cart">Sepete Ekle</button>
             </div>
         </div>
@@ -784,7 +794,7 @@
             <div class="product-info">
                 <h3 class="product-name">Kestane Balı</h3>
                 <p class="product-description">Kestane ağaçlarından edilen koyu ve sert tatlı bal. Çocuklar için özellikle uygun.</p>
-                <div class="product-price">₺1750/kg</div>
+                <div class="product-price">₺1400/kg</div>
                 <button class="add-to-cart">Sepete Ekle</button>
             </div>
         </div>
@@ -873,8 +883,8 @@
     // Product data
     const products = {
         'Çiçek Balı': { price: 400, unit: 'kg' },
-        'Kestane Balı': { price: 1350, unit: 'kg' },
-        'Çam Balı': { price: 195, unit: 'kg' },
+        'Kestane Balı': { price: 1400, unit: 'kg' },
+        'Çam Balı': { price: 500, unit: 'kg' },
     };
 
     // Add to cart function
